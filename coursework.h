@@ -369,6 +369,7 @@ gupdate_t load_file(void* args[], kaction_t action, tuple_t pos)
 	else if (action == INPUT_BACK) return gupdate_c(FRAME_EXIT, NULL);
 	else
 	{
+		printf("\n\n\n");
 		draw_list(pos.y, param, FILES_ON_PAGE * pos.x, FILES_ON_PAGE * (pos.x + 1));
 		printf("\n\t\t\tpage: %d/%d", pos.x + 1, (int)ceil(param->size / (double)FILES_ON_PAGE));
 	}
