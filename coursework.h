@@ -1,7 +1,7 @@
 #pragma once//ver 1.5
 
 /*
-* подключаемые заголовочные файлы
+* ГЇГ®Г¤ГЄГ«ГѕГ·Г ГҐГ¬Г»ГҐ Г§Г ГЈГ®Г«Г®ГўГ®Г·Г­Г»ГҐ ГґГ Г©Г«Г»
 */
 
 #include <stdio.h>
@@ -15,7 +15,7 @@
 #include <dirent.h>
 
 /*
-* константы для настройки работы приложения
+* ГЄГ®Г­Г±ГІГ Г­ГІГ» Г¤Г«Гї Г­Г Г±ГІГ°Г®Г©ГЄГЁ Г°Г ГЎГ®ГІГ» ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї
 */
 
 #define WHITE_CELL 0
@@ -28,7 +28,7 @@
 #define clear_frame(void) system("cls")
 
 /*
-* константы для отрисовки баннеров
+* ГЄГ®Г­Г±ГІГ Г­ГІГ» Г¤Г«Гї Г®ГІГ°ГЁГ±Г®ГўГЄГЁ ГЎГ Г­Г­ГҐГ°Г®Гў
 */
 
 const char* WIN_LABEL = "\t=====  |   |      |===|  |   |  |  /|  |===  |===|    \\      \\ \n\t  |    |=| |      |--/   |=| |  | / |  |     |__-|   /_\\    / \\ \n\t  |    |_| |      |___|  |_| |  |/  |  |     |      /   \\  /   \\ \n";
@@ -36,8 +36,8 @@ const char* LOSE_LABEL = "\t=====  |   |      |===|  |===|  |===|  |  /|  |===  
 const char* NAME_LABEL = "\t\t| /  \\  /   |==|  |==|  |\\ /|    \\    |==|  \\  /\n\t\t|\\     /    |__|  |  |  | \\ |   /_\\   |       /\n\t\t| \\   /     |	  |__|  |   |  /   \\  |__|   /";
 
 /*
-* создание типа KEY_CODE для работы с клавишами
-* значения присваиваются в соответствии с кодами клавиатурных символов
+* Г±Г®Г§Г¤Г Г­ГЁГҐ ГІГЁГЇГ  KEY_CODE Г¤Г«Гї Г°Г ГЎГ®ГІГ» Г± ГЄГ«Г ГўГЁГёГ Г¬ГЁ
+* Г§Г­Г Г·ГҐГ­ГЁГї ГЇГ°ГЁГ±ГўГ ГЁГўГ ГѕГІГ±Гї Гў Г±Г®Г®ГІГўГҐГІГ±ГІГўГЁГЁ Г± ГЄГ®Г¤Г Г¬ГЁ ГЄГ«Г ГўГЁГ ГІГіГ°Г­Г»Гµ Г±ГЁГ¬ГўГ®Г«Г®Гў
 */
 
 typedef enum
@@ -51,8 +51,8 @@ typedef enum
 } KEY_CODE;
 
 /*
-* определение типа color_t для маркировки цветов, которые используются при отрисовки интерфейса
-* значения соответствуют кодам цветов.
+* Г®ГЇГ°ГҐГ¤ГҐГ«ГҐГ­ГЁГҐ ГІГЁГЇГ  color_t Г¤Г«Гї Г¬Г Г°ГЄГЁГ°Г®ГўГЄГЁ Г¶ГўГҐГІГ®Гў, ГЄГ®ГІГ®Г°Г»ГҐ ГЁГ±ГЇГ®Г«ГјГ§ГіГѕГІГ±Гї ГЇГ°ГЁ Г®ГІГ°ГЁГ±Г®ГўГЄГЁ ГЁГ­ГІГҐГ°ГґГҐГ©Г±Г 
+* Г§Г­Г Г·ГҐГ­ГЁГї Г±Г®Г®ГІГўГҐГІГ±ГІГўГіГѕГІ ГЄГ®Г¤Г Г¬ Г¶ГўГҐГІГ®Гў.
 */
 
 typedef enum
@@ -65,36 +65,36 @@ typedef enum
 } color_t;
 
 /*
-* тип gstate_t необходим для работы с текущим внутриигровым состоянием:
-*	STATE_RUNNING - обычное состояние
-*	STATE_LOSE - пользователь допустил ошибку во время игры
-*	STATE_WIN - пользователь заполнил поле правильно
+* ГІГЁГЇ gstate_t Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬ Г¤Г«Гї Г°Г ГЎГ®ГІГ» Г± ГІГҐГЄГіГ№ГЁГ¬ ГўГ­ГіГІГ°ГЁГЁГЈГ°Г®ГўГ»Г¬ Г±Г®Г±ГІГ®ГїГ­ГЁГҐГ¬:
+*	STATE_RUNNING - Г®ГЎГ»Г·Г­Г®ГҐ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ
+*	STATE_LOSE - ГЇГ®Г«ГјГ§Г®ГўГ ГІГҐГ«Гј Г¤Г®ГЇГіГ±ГІГЁГ« Г®ГёГЁГЎГЄГі ГўГ® ГўГ°ГҐГ¬Гї ГЁГЈГ°Г»
+*	STATE_WIN - ГЇГ®Г«ГјГ§Г®ГўГ ГІГҐГ«Гј Г§Г ГЇГ®Г«Г­ГЁГ« ГЇГ®Г«ГҐ ГЇГ°Г ГўГЁГ«ГјГ­Г®
 */
 typedef enum { STATE_RUNNING, STATE_WIN, STATE_LOSE } gstate_t;
 
 /*
-* тип kaction_t необходим для обработки состояний нажатых клавишь пользователем:
-*	INPUT_ERROR - пользователь нажал не верную клавишу
-*	INPUT_NORMALLY - пользователь нажал клавишу для смены положение курсора
-*	INPUT_ACCEPT - пользователь нажал клавишу для потверждения
-*	INPUT_BACK - пользователь нажал клавишу "возврата"
+* ГІГЁГЇ kaction_t Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬ Г¤Г«Гї Г®ГЎГ°Г ГЎГ®ГІГЄГЁ Г±Г®Г±ГІГ®ГїГ­ГЁГ© Г­Г Г¦Г ГІГ»Гµ ГЄГ«Г ГўГЁГёГј ГЇГ®Г«ГјГ§Г®ГўГ ГІГҐГ«ГҐГ¬:
+*	INPUT_ERROR - ГЇГ®Г«ГјГ§Г®ГўГ ГІГҐГ«Гј Г­Г Г¦Г Г« Г­ГҐ ГўГҐГ°Г­ГіГѕ ГЄГ«Г ГўГЁГёГі
+*	INPUT_NORMALLY - ГЇГ®Г«ГјГ§Г®ГўГ ГІГҐГ«Гј Г­Г Г¦Г Г« ГЄГ«Г ГўГЁГёГі Г¤Г«Гї Г±Г¬ГҐГ­Г» ГЇГ®Г«Г®Г¦ГҐГ­ГЁГҐ ГЄГіГ°Г±Г®Г°Г 
+*	INPUT_ACCEPT - ГЇГ®Г«ГјГ§Г®ГўГ ГІГҐГ«Гј Г­Г Г¦Г Г« ГЄГ«Г ГўГЁГёГі Г¤Г«Гї ГЇГ®ГІГўГҐГ°Г¦Г¤ГҐГ­ГЁГї
+*	INPUT_BACK - ГЇГ®Г«ГјГ§Г®ГўГ ГІГҐГ«Гј Г­Г Г¦Г Г« ГЄГ«Г ГўГЁГёГі "ГўГ®Г§ГўГ°Г ГІГ "
 */
 typedef enum { INPUT_ERROR, INPUT_NORMALLY, INPUT_ACCEPT, INPUT_BACK } kaction_t;
 /*
-* тип fupdate_t предназначен для обработки состояния отрисовки интерфейса
-*	FRAME_CONTINUE - отрисовка продолжается
-*	FRAME_RETURN - вернуться в начало отрисовки
-*	FRAME_EXIT - выйти из отрисовки данного кадра и вернуть значения
+* ГІГЁГЇ fupdate_t ГЇГ°ГҐГ¤Г­Г Г§Г­Г Г·ГҐГ­ Г¤Г«Гї Г®ГЎГ°Г ГЎГ®ГІГЄГЁ Г±Г®Г±ГІГ®ГїГ­ГЁГї Г®ГІГ°ГЁГ±Г®ГўГЄГЁ ГЁГ­ГІГҐГ°ГґГҐГ©Г±Г 
+*	FRAME_CONTINUE - Г®ГІГ°ГЁГ±Г®ГўГЄГ  ГЇГ°Г®Г¤Г®Г«Г¦Г ГҐГІГ±Гї
+*	FRAME_RETURN - ГўГҐГ°Г­ГіГІГјГ±Гї Гў Г­Г Г·Г Г«Г® Г®ГІГ°ГЁГ±Г®ГўГЄГЁ
+*	FRAME_EXIT - ГўГ»Г©ГІГЁ ГЁГ§ Г®ГІГ°ГЁГ±Г®ГўГЄГЁ Г¤Г Г­Г­Г®ГЈГ® ГЄГ Г¤Г°Г  ГЁ ГўГҐГ°Г­ГіГІГј Г§Г­Г Г·ГҐГ­ГЁГї
 */
 typedef enum { FRAME_CONTINUE, FRAME_RETURN, FRAME_EXIT } fupdate_t;
 
-typedef char name_t[261]; //строковый тип определенный для работы с названиями
-typedef _Bool bool; //опредение булевого типа 
+typedef char name_t[261]; //Г±ГІГ°Г®ГЄГ®ГўГ»Г© ГІГЁГЇ Г®ГЇГ°ГҐГ¤ГҐГ«ГҐГ­Г­Г»Г© Г¤Г«Гї Г°Г ГЎГ®ГІГ» Г± Г­Г Г§ГўГ Г­ГЁГїГ¬ГЁ
+typedef _Bool bool; //Г®ГЇГ°ГҐГ¤ГҐГ­ГЁГҐ ГЎГіГ«ГҐГўГ®ГЈГ® ГІГЁГЇГ  
 
 /*
-* структура gupdate_t определяет состояние и действие для текущего кадра
-*	frame_update_state - для хранения состояния
-*	return_value - указатель на возвращаемое значение
+* Г±ГІГ°ГіГЄГІГіГ°Г  gupdate_t Г®ГЇГ°ГҐГ¤ГҐГ«ГїГҐГІ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ ГЁ Г¤ГҐГ©Г±ГІГўГЁГҐ Г¤Г«Гї ГІГҐГЄГіГ№ГҐГЈГ® ГЄГ Г¤Г°Г 
+*	frame_update_state - Г¤Г«Гї ГµГ°Г Г­ГҐГ­ГЁГї Г±Г®Г±ГІГ®ГїГ­ГЁГї
+*	return_value - ГіГЄГ Г§Г ГІГҐГ«Гј Г­Г  ГўГ®Г§ГўГ°Г Г№Г ГҐГ¬Г®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ
 */
 
 typedef struct
@@ -102,28 +102,28 @@ typedef struct
 	fupdate_t frame_update_state;
 	void* return_value;
 } gupdate_t;
-gupdate_t gupdate_c(fupdate_t frame_update_state, void* return_value) // конструктор для структуры gupdate_t
+gupdate_t gupdate_c(fupdate_t frame_update_state, void* return_value) // ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° Г¤Г«Гї Г±ГІГ°ГіГЄГІГіГ°Г» gupdate_t
 {
 	gupdate_t constructor = { frame_update_state, return_value };
 	return constructor;
 }
 
 /*
-* структура tuple_t хранение двух значений (координат)
+* Г±ГІГ°ГіГЄГІГіГ°Г  tuple_t ГµГ°Г Г­ГҐГ­ГЁГҐ Г¤ГўГіГµ Г§Г­Г Г·ГҐГ­ГЁГ© (ГЄГ®Г®Г°Г¤ГЁГ­Г ГІ)
 */
 
 typedef struct { int x, y; } tuple_t;
-tuple_t tuple_c(int x, int y) // конструктор для структуры tuple_t
+tuple_t tuple_c(int x, int y) // ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° Г¤Г«Гї Г±ГІГ°ГіГЄГІГіГ°Г» tuple_t
 {
 	tuple_t constructor = { x, y };
 	return constructor;
 }
 
 /*
-* структура cell_t описывает свойства клетки игрового поля
-*	free_value - кортеж для хранение видимых клеток по двум осям
-*	check_value - значение клетки
-*	color - цвет для отрисовки
+* Г±ГІГ°ГіГЄГІГіГ°Г  cell_t Г®ГЇГЁГ±Г»ГўГ ГҐГІ Г±ГўГ®Г©Г±ГІГўГ  ГЄГ«ГҐГІГЄГЁ ГЁГЈГ°Г®ГўГ®ГЈГ® ГЇГ®Г«Гї
+*	free_value - ГЄГ®Г°ГІГҐГ¦ Г¤Г«Гї ГµГ°Г Г­ГҐГ­ГЁГҐ ГўГЁГ¤ГЁГ¬Г»Гµ ГЄГ«ГҐГІГ®ГЄ ГЇГ® Г¤ГўГіГ¬ Г®Г±ГїГ¬
+*	check_value - Г§Г­Г Г·ГҐГ­ГЁГҐ ГЄГ«ГҐГІГЄГЁ
+*	color - Г¶ГўГҐГІ Г¤Г«Гї Г®ГІГ°ГЁГ±Г®ГўГЄГЁ
 */
 
 typedef struct
@@ -132,16 +132,16 @@ typedef struct
 	int check_value;
 	color_t color;
 } cell_t;
-cell_t cell_c(int check, int free, color_t color)// конструктор для структуры cell_t
+cell_t cell_c(int check, int free, color_t color)// ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° Г¤Г«Гї Г±ГІГ°ГіГЄГІГіГ°Г» cell_t
 {
 	cell_t constructor = { tuple_c(free, free), check ,color };
 	return constructor;
 }
 
 /*
-* структура dir_t описывает значения и размер массива строк
-*	array - массив строк
-*	size - размер массива
+* Г±ГІГ°ГіГЄГІГіГ°Г  dir_t Г®ГЇГЁГ±Г»ГўГ ГҐГІ Г§Г­Г Г·ГҐГ­ГЁГї ГЁ Г°Г Г§Г¬ГҐГ° Г¬Г Г±Г±ГЁГўГ  Г±ГІГ°Г®ГЄ
+*	array - Г¬Г Г±Г±ГЁГў Г±ГІГ°Г®ГЄ
+*	size - Г°Г Г§Г¬ГҐГ° Г¬Г Г±Г±ГЁГўГ 
 */
 
 typedef struct
@@ -149,17 +149,17 @@ typedef struct
 	name_t* array;
 	int size;
 } dir_t;
-dir_t dir_c(name_t* dir, int size) // конструктор для структуры dir_t
+dir_t dir_c(name_t* dir, int size) // ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° Г¤Г«Гї Г±ГІГ°ГіГЄГІГіГ°Г» dir_t
 {
 	dir_t constructor = { dir, size };
 	return constructor;
 }
 
 /*
-* структура field_t описывает игровое поле
-*	array - массив клеток типа cell_t
-*	size - размер поля (массива)
-*	name - название поля
+* Г±ГІГ°ГіГЄГІГіГ°Г  field_t Г®ГЇГЁГ±Г»ГўГ ГҐГІ ГЁГЈГ°Г®ГўГ®ГҐ ГЇГ®Г«ГҐ
+*	array - Г¬Г Г±Г±ГЁГў ГЄГ«ГҐГІГ®ГЄ ГІГЁГЇГ  cell_t
+*	size - Г°Г Г§Г¬ГҐГ° ГЇГ®Г«Гї (Г¬Г Г±Г±ГЁГўГ )
+*	name - Г­Г Г§ГўГ Г­ГЁГҐ ГЇГ®Г«Гї
 */
 
 typedef struct
@@ -168,13 +168,13 @@ typedef struct
 	name_t name;
 	int size;
 }field_t;
-field_t field_c(cell_t* array, name_t name, int size) // конструктор для структуры field_t
+field_t field_c(cell_t* array, name_t name, int size) // ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° Г¤Г«Гї Г±ГІГ°ГіГЄГІГіГ°Г» field_t
 {
 	field_t constructor = { array, name, size };
 	return constructor;
 }
 
-// определение типа функции, вызываемой при отрисовки кадра 
+// Г®ГЇГ°ГҐГ¤ГҐГ«ГҐГ­ГЁГҐ ГІГЁГЇГ  ГґГіГ­ГЄГ¶ГЁГЁ, ГўГ»Г§Г»ГўГ ГҐГ¬Г®Г© ГЇГ°ГЁ Г®ГІГ°ГЁГ±Г®ГўГЄГЁ ГЄГ Г¤Г°Г  
 typedef gupdate_t(*update_action_function)(void* args[], kaction_t action, tuple_t pos);
 
 void set_line(int dir, int* last, int i, int* cell);
@@ -219,8 +219,8 @@ void* update_frame(update_action_function action, tuple_t max,
 		case INPUT_NORMALLY:
 
 			clear_frame();
-			printf("\n[ W A S D: ПРЕМЕСТИТЬ КУРСОР ] [ SPACE: ПОДТВЕРДИТЬ ] [ %18.18s ]\n",
-				(back_use) ? "ESCAPE: ВЕРНУТЬСЯ" : "==================");
+			printf("\n[ W A S D: ГЏГђГ…ГЊГ…Г‘Г’Г€Г’Гњ ГЉГ“ГђГ‘ГЋГђ ] [ SPACE: ГЏГЋГ„Г’Г‚Г…ГђГ„Г€Г’Гњ ] [ %18.18s ]\n",
+				(back_use) ? "ESCAPE: Г‚Г…ГђГЌГ“Г’ГњГ‘Гџ" : "==================");
 
 			gupdate_t update = action(param, input, pos);
 			if (update.frame_update_state || input == INPUT_ACCEPT)
@@ -241,7 +241,7 @@ void draw_list(int cursor, dir_t* param, int begin, int end)
 	for (int i = begin; i < end; i++)
 	{
 		if (cursor == i)SetConsoleTextAttribute(console, SELECT);
-		printf("\n\t\t\t[ %20.20s ]\n", i < param->size ? *(param->array + i) : "ПУСТО");
+		printf("\n\t\t\t[ %20.20s ]\n", i < param->size ? *(param->array + i) : "ГЏГ“Г‘Г’ГЋ");
 		SetConsoleTextAttribute(console, DEFAULT);
 	}
 }
@@ -256,7 +256,7 @@ gupdate_t set_cell_value(void* args[], kaction_t action, tuple_t pos)
 	}
 	else
 	{
-		printf("\n\n\n\n\t\t[ ЗНАЧЕНИЕ: %c %2d %c ]", (pos.x == 0) ? ' ' : '<', pos.x,
+		printf("\n\n\n\n\t\t[ Г‡ГЌГЂГ—Г…ГЌГ€Г…: %c %2d %c ]", (pos.x == 0) ? ' ' : '<', pos.x,
 			(pos.x == *field_size * 2 - 1) ? ' ' : '>');
 	}
 	return gupdate_c(FRAME_CONTINUE, NULL);
@@ -279,7 +279,7 @@ gupdate_t set_field_size(void* args[], kaction_t action, tuple_t pos)
 		return gupdate_c(FRAME_EXIT, &field);
 	}
 
-	printf("\n\n\n\n\t\t[ РАЗМЕР ПОЛЯ: %c %2d %c ]", (pos.x == 0) ? ' ' : '<',
+	printf("\n\n\n\n\t\t[ ГђГЂГ‡ГЊГ…Гђ ГЏГЋГ‹Гџ: %c %2d %c ]", (pos.x == 0) ? ' ' : '<',
 		pos.x + MIN_FIELD_SIZE, (pos.x == MAX_FIELD_SIZE - MIN_FIELD_SIZE) ? ' ' : '>');
 
 	return gupdate_c(FRAME_CONTINUE, NULL);
@@ -294,7 +294,7 @@ gupdate_t dialog_box(void* args[], kaction_t action, tuple_t pos)
 		return gupdate_c(FRAME_EXIT, &select);
 	}
 
-	printf("\n\n\n\t\t\t%s\n", "ЧТО ВЫ ХОТИТЕ СДЕЛАТЬ?\n\n\n");
+	printf("\n\n\n\t\t\t%s\n", "Г—Г’ГЋ Г‚Г› Г•ГЋГ’Г€Г’Г… Г‘Г„Г…Г‹ГЂГ’Гњ?\n\n\n");
 	draw_list(pos.y, items, 0, items->size);
 
 	return gupdate_c(FRAME_CONTINUE, NULL);
@@ -310,7 +310,7 @@ gupdate_t set_field_values(void* args[], kaction_t action, tuple_t pos)
 	}
 	else if (action == INPUT_BACK)
 	{
-		name_t list[] = { "ПРОДОЛЖИТЬ", "ВЫЙТИ", "СОХРАНИТЬ" };
+		name_t list[] = { "ГЏГђГЋГ„ГЋГ‹Г†Г€Г’Гњ", "Г‚Г›Г‰Г’Г€", "Г‘ГЋГ•ГђГЂГЌГ€Г’Гњ" };
 		dir_t items = dir_c(list, 3);
 		switch (*(int*)update_frame(dialog_box, tuple_c(0, 3), FALSE, &items))
 		{
@@ -318,7 +318,7 @@ gupdate_t set_field_values(void* args[], kaction_t action, tuple_t pos)
 		case 1: return gupdate_c(FRAME_EXIT, NULL);
 		case 2:
 			clear_frame();
-			printf("\n\n\n\t\t\t[ ВВЕДИТЕ НАЗВАНИЕ ]: ");
+			printf("\n\n\n\t\t\t[ Г‚Г‚Г…Г„Г€Г’Г… ГЌГЂГ‡Г‚ГЂГЌГ€Г… ]: ");
 			scanf("%s", field->name);
 			return gupdate_c(FRAME_EXIT, field);
 		}
@@ -332,8 +332,8 @@ gupdate_t set_field_values(void* args[], kaction_t action, tuple_t pos)
 void print_rules(void)
 {
 	clear_frame();
-	printf("\n\t\tКуромасу играется на прямоугольной сетке. \n\t\tВ некоторых из этих ячеек есть числа. \n\t\tКаждая ячейка может быть черной или белой. \n\t\tЦель состоит в том, чтобы определить, \n\t\tк какому типу относится каждая ячейка.\n\t\tСледующие правила определяют, какие ячейки какие :\n\n\t\t\t1)Каждое число на доске представляет \n\t\tколичество белых клеток, которые можно увидеть из этой клетки,\n\t\t включая ее самого.Ячейку можно увидеть из другой ячейки,\n\t\t если они находятся в той же строке или столбце,\n\t\t и между ними нет черных ячеек в этой строке или столбце.\n\t\t\t2)Пронумерованные ячейки не могут быть черными.\n\t\t\t3)Никакие две черные клетки не могут быть смежными \n\t\tпо горизонтали или вертикали.\n\t\t\t4)Все белые клетки должны быть соединены горизонтально \n\t\tили вертикально.\n");
-	printf("\n\t\t\t\tНАЖМИТЕ КЛАВИШУ ДЛЯ ПРОДОЛЖЕНИЯ\n\n");
+	printf("\n\t\tГЉГіГ°Г®Г¬Г Г±Гі ГЁГЈГ°Г ГҐГІГ±Гї Г­Г  ГЇГ°ГїГ¬Г®ГіГЈГ®Г«ГјГ­Г®Г© Г±ГҐГІГЄГҐ. \n\t\tГ‚ Г­ГҐГЄГ®ГІГ®Г°Г»Гµ ГЁГ§ ГЅГІГЁГµ ГїГ·ГҐГҐГЄ ГҐГ±ГІГј Г·ГЁГ±Г«Г . \n\t\tГЉГ Г¦Г¤Г Гї ГїГ·ГҐГ©ГЄГ  Г¬Г®Г¦ГҐГІ ГЎГ»ГІГј Г·ГҐГ°Г­Г®Г© ГЁГ«ГЁ ГЎГҐГ«Г®Г©. \n\t\tГ–ГҐГ«Гј Г±Г®Г±ГІГ®ГЁГІ Гў ГІГ®Г¬, Г·ГІГ®ГЎГ» Г®ГЇГ°ГҐГ¤ГҐГ«ГЁГІГј, \n\t\tГЄ ГЄГ ГЄГ®Г¬Гі ГІГЁГЇГі Г®ГІГ­Г®Г±ГЁГІГ±Гї ГЄГ Г¦Г¤Г Гї ГїГ·ГҐГ©ГЄГ .\n\t\tГ‘Г«ГҐГ¤ГіГѕГ№ГЁГҐ ГЇГ°Г ГўГЁГ«Г  Г®ГЇГ°ГҐГ¤ГҐГ«ГїГѕГІ, ГЄГ ГЄГЁГҐ ГїГ·ГҐГ©ГЄГЁ ГЄГ ГЄГЁГҐ :\n\n\t\t\t1)ГЉГ Г¦Г¤Г®ГҐ Г·ГЁГ±Г«Г® Г­Г  Г¤Г®Г±ГЄГҐ ГЇГ°ГҐГ¤Г±ГІГ ГўГ«ГїГҐГІ \n\t\tГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЎГҐГ«Г»Гµ ГЄГ«ГҐГІГ®ГЄ, ГЄГ®ГІГ®Г°Г»ГҐ Г¬Г®Г¦Г­Г® ГіГўГЁГ¤ГҐГІГј ГЁГ§ ГЅГІГ®Г© ГЄГ«ГҐГІГЄГЁ,\n\t\t ГўГЄГ«ГѕГ·Г Гї ГҐГҐ Г±Г Г¬Г®ГЈГ®.ГџГ·ГҐГ©ГЄГі Г¬Г®Г¦Г­Г® ГіГўГЁГ¤ГҐГІГј ГЁГ§ Г¤Г°ГіГЈГ®Г© ГїГ·ГҐГ©ГЄГЁ,\n\t\t ГҐГ±Г«ГЁ Г®Г­ГЁ Г­Г ГµГ®Г¤ГїГІГ±Гї Гў ГІГ®Г© Г¦ГҐ Г±ГІГ°Г®ГЄГҐ ГЁГ«ГЁ Г±ГІГ®Г«ГЎГ¶ГҐ,\n\t\t ГЁ Г¬ГҐГ¦Г¤Гі Г­ГЁГ¬ГЁ Г­ГҐГІ Г·ГҐГ°Г­Г»Гµ ГїГ·ГҐГҐГЄ Гў ГЅГІГ®Г© Г±ГІГ°Г®ГЄГҐ ГЁГ«ГЁ Г±ГІГ®Г«ГЎГ¶ГҐ.\n\t\t\t2)ГЏГ°Г®Г­ГіГ¬ГҐГ°Г®ГўГ Г­Г­Г»ГҐ ГїГ·ГҐГ©ГЄГЁ Г­ГҐ Г¬Г®ГЈГіГІ ГЎГ»ГІГј Г·ГҐГ°Г­Г»Г¬ГЁ.\n\t\t\t3)ГЌГЁГЄГ ГЄГЁГҐ Г¤ГўГҐ Г·ГҐГ°Г­Г»ГҐ ГЄГ«ГҐГІГЄГЁ Г­ГҐ Г¬Г®ГЈГіГІ ГЎГ»ГІГј Г±Г¬ГҐГ¦Г­Г»Г¬ГЁ \n\t\tГЇГ® ГЈГ®Г°ГЁГ§Г®Г­ГІГ Г«ГЁ ГЁГ«ГЁ ГўГҐГ°ГІГЁГЄГ Г«ГЁ.\n\t\t\t4)Г‚Г±ГҐ ГЎГҐГ«Г»ГҐ ГЄГ«ГҐГІГЄГЁ Г¤Г®Г«Г¦Г­Г» ГЎГ»ГІГј Г±Г®ГҐГ¤ГЁГ­ГҐГ­Г» ГЈГ®Г°ГЁГ§Г®Г­ГІГ Г«ГјГ­Г® \n\t\tГЁГ«ГЁ ГўГҐГ°ГІГЁГЄГ Г«ГјГ­Г®.\n");
+	printf("\n\t\t\t\tГЌГЂГ†ГЊГ€Г’Г… ГЉГ‹ГЂГ‚Г€ГГ“ Г„Г‹Гџ ГЏГђГЋГ„ГЋГ‹Г†Г…ГЌГ€Гџ\n\n");
 	getch();
 }
 
@@ -391,7 +391,7 @@ gupdate_t settings(void* args[], kaction_t action, tuple_t pos)
 				if (!file_data(save_field, FALSE))
 				{
 					clear_frame();
-					printf("\n\n\n\t\t\t[ НЕВОЗМОЖНО СОХРАНИТЬ ]\n");
+					printf("\n\n\n\t\t\t[ ГЌГ…Г‚ГЋГ‡ГЊГЋГ†ГЌГЋ Г‘ГЋГ•ГђГЂГЌГ€Г’Гњ ]\n");
 				}
 				else *field = *save_field;
 			}
@@ -410,9 +410,9 @@ gupdate_t settings(void* args[], kaction_t action, tuple_t pos)
 	}
 	else if (action == INPUT_BACK) return gupdate_c(FRAME_EXIT, field);
 
-	printf("\nТЕКУЩЕЕ ПОЛЕ: %s\n\n\n", field->name);
+	printf("\nГ’Г…ГЉГ“Г™Г…Г… ГЏГЋГ‹Г…: %s\n\n\n", field->name);
 
-	const name_t list[] = { "СОЗДАТЬ", "ЗАГРУЗИТЬ", "ПРАВИЛА", "НАЗАД" };
+	const name_t list[] = { "Г‘ГЋГ‡Г„ГЂГ’Гњ", "Г‡ГЂГѓГђГ“Г‡Г€Г’Гњ", "ГЏГђГЂГ‚Г€Г‹ГЂ", "ГЌГЂГ‡ГЂГ„" };
 	dir_t items = dir_c(list, 4);
 
 	draw_list(pos.y, &items, 0, 4);
@@ -433,7 +433,7 @@ gupdate_t mainmenu(void* args[], kaction_t action, tuple_t pos)
 			if (!check)
 			{
 				clear_frame();
-				printf("\n\n\n\t\t\tНЕВОЗМОЖНО ЗАГРУЗИТЬ ПОЛЕ: %s\n", field->name);
+				printf("\n\n\n\t\t\tГЌГ…Г‚ГЋГ‡ГЊГЋГ†ГЌГЋ Г‡ГЂГѓГђГ“Г‡Г€Г’Гњ ГЏГЋГ‹Г…: %s\n", field->name);
 				getch(); break;
 			}
 			bool* game_result = (bool*)update_frame(game_loop, tuple_c(field->size, field->size), TRUE, field);
@@ -451,7 +451,7 @@ gupdate_t mainmenu(void* args[], kaction_t action, tuple_t pos)
 			break;
 		case 2:;
 
-			name_t list[] = { "ВЕРНУТЬСЯ", "ВЫЙТИ" };
+			name_t list[] = { "Г‚Г…ГђГЌГ“Г’ГњГ‘Гџ", "Г‚Г›Г‰Г’Г€" };
 			dir_t items = dir_c(list, 2);
 
 			switch (*(int*)update_frame(dialog_box, tuple_c(0, 2), FALSE, &items))
@@ -464,7 +464,7 @@ gupdate_t mainmenu(void* args[], kaction_t action, tuple_t pos)
 
 	printf("\n%s\n\n\n", NAME_LABEL);
 
-	name_t list[] = { "НАЧАТЬ", "РЕДАКТОР", "ВЫЙТИ" };
+	name_t list[] = { "ГЌГЂГ—ГЂГ’Гњ", "ГђГ…Г„ГЂГЉГ’ГЋГђ", "Г‚Г›Г‰Г’Г€" };
 	dir_t items = dir_c(list, 3);
 	draw_list(pos.y, &items, 0, 3);
 
@@ -517,7 +517,7 @@ bool file_data(field_t* field, bool readonly)
 	return TRUE;
 }
 
-kaction_t get_keyboard_input(tuple_t* pos, tuple_t max) // стрелочное управление WASD & SPACE
+kaction_t get_keyboard_input(tuple_t* pos, tuple_t max) // Г±ГІГ°ГҐГ«Г®Г·Г­Г®ГҐ ГіГЇГ°Г ГўГ«ГҐГ­ГЁГҐ WASD & SPACE
 {
 	kaction_t state = INPUT_NORMALLY;
 	switch (getch())
@@ -545,10 +545,10 @@ gupdate_t game_loop(void* args[], kaction_t action, tuple_t pos)
 
 	field_t* field = (field_t*)args;
 
-	printf("\n[ ЖИЗНИ: %8.8s ]\n", life_line);
+	printf("\n[ Г†Г€Г‡ГЌГ€: %8.8s ]\n", life_line);
 	if (action == INPUT_BACK)
 	{
-		name_t list[] = { "ПРОДОЛЖИТЬ", "ВЫЙТИ" };
+		name_t list[] = { "ГЏГђГЋГ„ГЋГ‹Г†Г€Г’Гњ", "Г‚Г›Г‰Г’Г€" };
 		dir_t items = dir_c(list, 2);
 
 		switch (*(int*)update_frame(dialog_box, tuple_c(0, 2), FALSE, &items))
@@ -571,7 +571,7 @@ gupdate_t game_loop(void* args[], kaction_t action, tuple_t pos)
 		life_counter = LIFE_COUNT;
 		return gupdate_c(FRAME_EXIT, &result);
 	case STATE_LOSE:
-		printf("\n\t\t\tНАЖМИТЕ КЛАВИШУ ДЛЯ ПРОДОЛЖЕНИЯ\n\n");
+		printf("\n\t\t\tГЌГЂГ†ГЊГ€Г’Г… ГЉГ‹ГЂГ‚Г€ГГ“ Г„Г‹Гџ ГЏГђГЋГ„ГЋГ‹Г†Г…ГЌГ€Гџ\n\n");
 		getch();
 		if (--life_counter <= 0)
 		{
@@ -585,14 +585,14 @@ gupdate_t game_loop(void* args[], kaction_t action, tuple_t pos)
 	return gupdate_c(FRAME_CONTINUE, NULL);
 }
 
-void set_line(int dir, int* last, int i, int* cell) // перезапись значений свобоных клеток выбранной оси
+void set_line(int dir, int* last, int i, int* cell) // ГЇГҐГ°ГҐГ§Г ГЇГЁГ±Гј Г§Г­Г Г·ГҐГ­ГЁГ© Г±ГўГ®ГЎГ®Г­Г»Гµ ГЄГ«ГҐГІГ®ГЄ ГўГ»ГЎГ°Г Г­Г­Г®Г© Г®Г±ГЁ
 {
 	int value = i - (*last);
 	for (; (*last) < i; (*last)++, cell += (4 * dir)) *cell = value;
 	(*last)++;
 }
 
-bool set_axies(tuple_t pos, field_t* ptr_param) //проверка по двум осям на пересечении x and y
+bool set_axies(tuple_t pos, field_t* ptr_param) //ГЇГ°Г®ГўГҐГ°ГЄГ  ГЇГ® Г¤ГўГіГ¬ Г®Г±ГїГ¬ Г­Г  ГЇГҐГ°ГҐГ±ГҐГ·ГҐГ­ГЁГЁ x and y
 {
 	cell_t* cell = (ptr_param->array + (pos.y * ptr_param->size + pos.x));
 
@@ -662,8 +662,8 @@ void draw_field(tuple_t pos, field_t* param)
 			SetConsoleTextAttribute(console, cell->color);
 			if (cell->check_value > 0)printf("|%5d|", cell->check_value);
 			else printf("|%5c|", cell->check_value == WHITE_CELL ? ' ' : 'X');
-
-			cell->color = DEFAULT;
+			
+			SetConsoleTextAttribute(console, cell->color = DEFAULT);
 
 		}
 		printf("\n\n");
