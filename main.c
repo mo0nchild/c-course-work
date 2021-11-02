@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "coursework.h"
 #include <stdio.h>
 #include <stdarg.h>
