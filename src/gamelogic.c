@@ -5,7 +5,7 @@ gupdate_t game_loop(void* args, kaction_t action, tuple_t pos)
 {
 	field_t* field = (field_t*)args;
 
-	// формирование копии поля.
+	// создание копии поля.
 	cell_t* buffer = (cell_t*)calloc(pow(field->size, 2), sizeof(cell_t));
 	for (int i = 0; i < pow(field->size, 2); i++) *(buffer + i) = *(field->array + i);
 	

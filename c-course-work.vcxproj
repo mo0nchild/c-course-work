@@ -141,8 +141,8 @@
   <ItemGroup>
     <ClCompile Include="main.c" />
     <ClCompile Include="src\gamelogic.c" />
-    <ClCompile Include="src\kuromasu.c" />
-    <ClCompile Include="src\struct_constructors.c" />
+    <ClCompile Include="src\body.c" />
+    <ClCompile Include="src\construct.c" />
     <ClCompile Include="src\ui.c" />
   </ItemGroup>
   <ItemGroup>

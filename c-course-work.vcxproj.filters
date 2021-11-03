@@ -21,10 +21,10 @@
     <ClCompile Include="src\gamelogic.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\kuromasu.c">
+    <ClCompile Include="src\body.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\struct_constructors.c">
+    <ClCompile Include="src\construct.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\ui.c">

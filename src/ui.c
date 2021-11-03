@@ -1,4 +1,4 @@
-#include "kuromasu.h"
+#include "kuromasu.h"//
 
 gupdate_t set_cell_value(void* args, kaction_t action, tuple_t pos)
 {
