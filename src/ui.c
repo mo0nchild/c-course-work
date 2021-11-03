@@ -10,7 +10,7 @@ gupdate_t set_cell_value(void* args, kaction_t action, tuple_t pos)
 	}
 	else
 	{
-		printf("\n\n\n\n\t\t[ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫: %c %2d %c ]", (pos.x == 0) ? ' ' : '<', pos.x,
+		printf("\n\n\n\n\t\t[ гмювемхе: %c %2d %c ]", (pos.x == 0) ? ' ' : '<', pos.x,
 			(pos.x == *field_size * 2 - 1) ? ' ' : '>');
 	}
 	return gupdate_c(FRAME_CONTINUE, NULL);
@@ -33,7 +33,7 @@ gupdate_t set_field_size(void* args, kaction_t action, tuple_t pos)
 		return gupdate_c(FRAME_EXIT, &field);
 	}
 
-	printf("\n\n\n\n\t\t[ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫: %c %2d %c ]", (pos.x == 0) ? ' ' : '<',
+	printf("\n\n\n\n\t\t[ пюглеп онкъ: %c %2d %c ]", (pos.x == 0) ? ' ' : '<',
 		pos.x + MIN_FIELD_SIZE, (pos.x == MAX_FIELD_SIZE - MIN_FIELD_SIZE) ? ' ' : '>');
 
 	return gupdate_c(FRAME_CONTINUE, NULL);
@@ -48,7 +48,7 @@ gupdate_t dialog_box(void* args, kaction_t action, tuple_t pos)
 		return gupdate_c(FRAME_EXIT, &select);
 	}
 
-	printf("\n\n\n\t\t\t%s\n", "О©╫О©╫О©╫ О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫?\n\n\n");
+	printf("\n\n\n\t\t\t%s\n", "врн бш унрхре ядекюрэ?\n\n\n");
 	draw_list(pos.y, items, 0, items->size);
 	return gupdate_c(FRAME_CONTINUE, NULL);
 }
@@ -63,7 +63,7 @@ gupdate_t set_field_values(void* args, kaction_t action, tuple_t pos)
 	}
 	else if (action == INPUT_BACK)
 	{
-		name_t list[] = { "О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫", "О©╫О©╫О©╫О©╫О©╫", "О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫" };
+		name_t list[] = { "опнднкфхрэ", "бширх", "янупюмхрэ" };
 		dir_t items = dir_c(list, 3);
 		switch (*(int*)update_frame(dialog_box, tuple_c(0, 3), FALSE, &items))
 		{
@@ -71,7 +71,7 @@ gupdate_t set_field_values(void* args, kaction_t action, tuple_t pos)
 		case 1: return gupdate_c(FRAME_EXIT, NULL);
 		case 2:
 			clear_frame();
-			printf("\n\n\n\t\t\t[ О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ ]: ");
+			printf("\n\n\n\t\t\t[ ббедхре мюгбюмхе ]: ");
 			scanf("%s", field->name);
 			return gupdate_c(FRAME_EXIT, field);
 		}
@@ -118,7 +118,7 @@ gupdate_t settings(void* args, kaction_t action, tuple_t pos)
 				if (!file_data(save_field, FALSE))
 				{
 					clear_frame();
-					printf("\n\n\n\t\t\t[ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ ]\n");
+					printf("\n\n\n\t\t\t[ мебнглнфмн янупюмхрэ ]\n");
 				}
 				else *field = *save_field;
 			}
@@ -137,9 +137,9 @@ gupdate_t settings(void* args, kaction_t action, tuple_t pos)
 	}
 	else if (action == INPUT_BACK) return gupdate_c(FRAME_EXIT, field);
 
-	printf("\nО©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫: %s\n\n\n", field->name);
+	printf("\nрейсыее онке: %s\n\n\n", field->name);
 
-	const name_t list[] = { "О©╫О©╫О©╫О©╫О©╫О©╫О©╫", "О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫", "О©╫О©╫О©╫О©╫О©╫О©╫О©╫", "О©╫О©╫О©╫О©╫О©╫" };
+	const name_t list[] = { "янгдюрэ", "гюцпсгхрэ", "опюбхкю", "мюгюд" };
 	dir_t items = dir_c(list, 4);
 
 	draw_list(pos.y, &items, 0, 4);
@@ -160,7 +160,7 @@ gupdate_t mainmenu(void* args, kaction_t action, tuple_t pos)
 			if (!check)
 			{
 				clear_frame();
-				printf("\n\n\n\t\t\tО©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫: %s\n", field->name);
+				printf("\n\n\n\t\t\tмебнглнфмн гюцпсгхрэ онке: %s\n", field->name);
 				getch(); break;
 			}
 			bool* game_result = (bool*)update_frame(game_loop, tuple_c(field->size, field->size), TRUE, field);
@@ -178,7 +178,7 @@ gupdate_t mainmenu(void* args, kaction_t action, tuple_t pos)
 			break;
 		case 2:;
 
-			name_t list[] = { "О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫", "О©╫О©╫О©╫О©╫О©╫" };
+			name_t list[] = { "бепмсрэяъ", "бширх" };
 			dir_t items = dir_c(list, 2);
 
 			switch (*(int*)update_frame(dialog_box, tuple_c(0, 2), FALSE, &items))
@@ -191,7 +191,7 @@ gupdate_t mainmenu(void* args, kaction_t action, tuple_t pos)
 
 	printf("\n%s\n\n\n", NAME_LABEL);
 
-	name_t list[] = { "О©╫О©╫О©╫О©╫О©╫О©╫", "О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫", "О©╫О©╫О©╫О©╫О©╫" };
+	name_t list[] = { "мювюрэ", "педюйрнп", "бширх" };
 	dir_t items = dir_c(list, 3);
 	draw_list(pos.y, &items, 0, 3);
 

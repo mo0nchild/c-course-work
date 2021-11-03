@@ -7,6 +7,6 @@ int main(void)
 
 	field_t field = { .name = "data.txt" };
 	update_frame(mainmenu, tuple_c(0, 3), FALSE, &field);
-	
+
 	return 0;
 }
