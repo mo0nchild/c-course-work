@@ -1,0 +1,26 @@
+﻿  main.c
+  gamelogic.c
+C:\Users\Byter\Desktop\shish\c-course-work\src\gamelogic.c(9,54): warning C4244: функция: преобразование "double" в "size_t", возможна потеря данных
+C:\Users\Byter\Desktop\shish\c-course-work\src\gamelogic.c(52,8): warning C4013: getch: нет определения; предполагается "extern" с возвратом типа "int"
+  kuromasu.c
+C:\Users\Byter\Desktop\shish\c-course-work\src\kuromasu.c(17,4): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "clear_frame"
+C:\Users\Byter\Desktop\shish\c-course-work\src\kuromasu.c(73,2): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "clear_frame"
+C:\Users\Byter\Desktop\shish\c-course-work\src\kuromasu.c(76,7): warning C4013: getch: нет определения; предполагается "extern" с возвратом типа "int"
+C:\Users\Byter\Desktop\shish\c-course-work\src\kuromasu.c(90,40): warning C4047: функция: "char *" отличается по уровням косвенного обращения от "name_t (*)"
+C:\Users\Byter\Desktop\shish\c-course-work\src\kuromasu.c(90,24): warning C4024: strcpy: различные типы для формального и фактического параметров 1
+C:\Users\Byter\Desktop\shish\c-course-work\src\kuromasu.c(111,53): warning C4244: функция: преобразование "double" в "size_t", возможна потеря данных
+  struct_constructors.c
+C:\Users\Byter\Desktop\shish\c-course-work\src\struct_constructors.c(29,1): warning C4047: инициализация: "char" отличается по уровням косвенного обращения от "char *"
+  ui.c
+C:\Users\Byter\Desktop\shish\c-course-work\src\ui.c(26,51): warning C4244: функция: преобразование "double" в "size_t", возможна потеря данных
+C:\Users\Byter\Desktop\shish\c-course-work\src\ui.c(73,4): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "clear_frame"
+C:\Users\Byter\Desktop\shish\c-course-work\src\ui.c(92,40): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "name_t (*)"
+C:\Users\Byter\Desktop\shish\c-course-work\src\ui.c(92,33): warning C4024: strcpy: различные типы для формального и фактического параметров 2
+C:\Users\Byter\Desktop\shish\c-course-work\src\ui.c(120,6): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "clear_frame"
+C:\Users\Byter\Desktop\shish\c-course-work\src\ui.c(130,85): warning C4244: функция: преобразование "double" в "int", возможна потеря данных
+C:\Users\Byter\Desktop\shish\c-course-work\src\ui.c(143,26): warning C4090: функция: разные квалификаторы "const"
+C:\Users\Byter\Desktop\shish\c-course-work\src\ui.c(162,5): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "clear_frame"
+C:\Users\Byter\Desktop\shish\c-course-work\src\ui.c(164,10): warning C4013: getch: нет определения; предполагается "extern" с возвратом типа "int"
+C:\Users\Byter\Desktop\shish\c-course-work\src\ui.c(170,5): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "clear_frame"
+  Создание кода...
+  c-course-work.vcxproj -> C:\Users\Byter\Desktop\shish\c-course-work\x64\Debug\c-course-work.exe

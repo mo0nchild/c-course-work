@@ -18,16 +18,16 @@
     <ClCompile Include="main.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="gamelogic.c">
+    <ClCompile Include="src\gamelogic.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="struct_constructors.c">
+    <ClCompile Include="src\kuromasu.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="ui.c">
+    <ClCompile Include="src\struct_constructors.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="kuromasu.c">
+    <ClCompile Include="src\ui.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,7 +35,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="kuromasu.h">
+    <ClInclude Include="src\kuromasu.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

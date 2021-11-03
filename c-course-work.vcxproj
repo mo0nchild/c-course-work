@@ -139,17 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="gamelogic.c" />
-    <ClCompile Include="kuromasu.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="ui.c" />
-    <ClCompile Include="struct_constructors.c" />
+    <ClCompile Include="src\gamelogic.c" />
+    <ClCompile Include="src\kuromasu.c" />
+    <ClCompile Include="src\struct_constructors.c" />
+    <ClCompile Include="src\ui.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="kuromasu.h" />
+    <ClInclude Include="src\kuromasu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

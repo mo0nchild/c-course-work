@@ -1,6 +1,4 @@
-#include "kuromasu.h"
-//#include <stdio.h>
-//#include <stdarg.h>
+#include "src/kuromasu.h"
 
 int main(void) 
 {
@@ -9,13 +7,6 @@ int main(void)
 
 	field_t field = { .name = "data.txt" };
 	update_frame(mainmenu, tuple_c(0, 3), FALSE, &field);
-
-
-	/*for(int i = 0; i < 120; i++) 
-	{
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), i);
-		printf("%d\n", i);
-	}*/
-
+	
 	return 0;
 }
