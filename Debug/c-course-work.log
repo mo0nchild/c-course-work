@@ -1,38 +1,4 @@
-﻿  main.c
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(173,1): warning C4047: инициализация: "char" отличается по уровням косвенного обращения от "char *"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(221,4): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "clear_frame"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(272,51): warning C4244: функция: преобразование "double" в "size_t", возможна потеря данных
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(309,90): warning C4047: функция: "void **" отличается по уровням косвенного обращения от "int *"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(309,76): warning C4022: update_frame: несоответствие указателя для фактического параметра 4
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(315,71): warning C4047: функция: "void **" отличается по уровням косвенного обращения от "dir_t *"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(315,65): warning C4022: update_frame: несоответствие указателя для фактического параметра 4
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(320,4): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "clear_frame"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(334,2): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "clear_frame"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(337,7): warning C4013: getch: нет определения; предполагается "extern" с возвратом типа "int"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(351,40): warning C4047: функция: "char *" отличается по уровням косвенного обращения от "name_t (*)"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(351,24): warning C4024: strcpy: различные типы для формального и фактического параметров 1
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(366,40): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "name_t (*)"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(366,33): warning C4024: strcpy: различные типы для формального и фактического параметров 2
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(387,127): warning C4047: функция: "void **" отличается по уровням косвенного обращения от "field_t *"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(387,116): warning C4022: update_frame: несоответствие указателя для фактического параметра 4
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(393,6): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "clear_frame"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(403,85): warning C4244: функция: преобразование "double" в "int", возможна потеря данных
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(403,101): warning C4047: функция: "void **" отличается по уровням косвенного обращения от "dir_t *"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(403,97): warning C4022: update_frame: несоответствие указателя для фактического параметра 4
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(416,26): warning C4090: функция: разные квалификаторы "const"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(435,5): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "clear_frame"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(439,101): warning C4047: функция: "void **" отличается по уровням косвенного обращения от "field_t *"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(439,96): warning C4022: update_frame: несоответствие указателя для фактического параметра 4
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(443,5): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "clear_frame"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(450,74): warning C4047: функция: "void **" отличается по уровням косвенного обращения от "field_t *"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(450,69): warning C4022: update_frame: несоответствие указателя для фактического параметра 4
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(457,72): warning C4047: функция: "void **" отличается по уровням косвенного обращения от "dir_t *"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(457,66): warning C4022: update_frame: несоответствие указателя для фактического параметра 4
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(481,53): warning C4047: функция: "void **" отличается по уровням косвенного обращения от "field_t *"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(481,47): warning C4022: update_frame: несоответствие указателя для фактического параметра 4
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(497,53): warning C4244: функция: преобразование "double" в "size_t", возможна потеря данных
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(554,71): warning C4047: функция: "void **" отличается по уровням косвенного обращения от "dir_t *"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(554,65): warning C4022: update_frame: несоответствие указателя для фактического параметра 4
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(562,54): warning C4047: функция: "field_t *" отличается по уровням косвенного обращения от "void **"
-C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\coursework.h(562,50): warning C4024: set_axies: различные типы для формального и фактического параметров 2
+﻿  gamelogic.c
+C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\gamelogic.c(7,54): warning C4244: функция: преобразование "double" в "size_t", возможна потеря данных
+C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\gamelogic.c(50,8): warning C4013: getch: нет определения; предполагается "extern" с возвратом типа "int"
   c-course-work.vcxproj -> C:\Users\Byter\Documents\Projects\CPPLang\Student\c-course-work\Debug\c-course-work.exe

@@ -1,11 +1,15 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include "coursework.h"
-#include <stdio.h>
-#include <stdarg.h>
+#include "kuromasu.h"
+//#include <stdio.h>
+//#include <stdarg.h>
 
 int main(void) 
 {
-	start_app();
+	setlocale(LC_ALL, "rus");
+	system("mkdir data");
+
+	field_t field = { .name = "data.txt" };
+	update_frame(mainmenu, tuple_c(0, 3), FALSE, &field);
+
 
 	/*for(int i = 0; i < 120; i++) 
 	{
