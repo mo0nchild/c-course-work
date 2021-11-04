@@ -1,4 +1,4 @@
-#include "kuromasu.h"//
+#include "kuromasu.h"
 
 void* update_frame(update_action_function action, tuple_t max,
 	bool back_use, void* param)
@@ -52,7 +52,6 @@ void draw_field(tuple_t pos, field_t* param)
 	{
 		for (int x = 0; x < param->size; x++)
 		{
-
 			cell = (param->array + (y * param->size + x));
 			if (cell->color != DEFAULT) cell->color = (pos.x == x && pos.y == y) ? MIX : cell->color;
 			else cell->color = (pos.x == x && pos.y == y) ? SELECT : DEFAULT;
@@ -62,7 +61,6 @@ void draw_field(tuple_t pos, field_t* param)
 			else printf("|%5c|", cell->check_value == WHITE_CELL ? ' ' : 'X');
 
 			SetConsoleTextAttribute(console, cell->color = DEFAULT);
-
 		}
 		printf("\n\n");
 	}
@@ -99,7 +97,19 @@ bool file_data(field_t* field, bool readonly)
 {
 	name_t dirname;
 	FILE* file;
-	if (!readonly)strcat(field->name, ".txt");
+	if (!readonly) 
+	{
+		bool checker = FALSE;
+		for (int i = 0; i < pow(field->size, 2); i++)
+		{
+			if ((field->array + i)->check_value > 0)
+			{
+				checker = TRUE;
+				break;
+			}
+		}
+		if (!checker) return FALSE;
+	}
 	sprintf(dirname, "./data/%s", field->name);
 
 	if (!(file = fopen(dirname, readonly ? "rt" : "w"))) return FALSE;
