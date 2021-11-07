@@ -22,7 +22,6 @@ gupdate_t game_loop(void* args, kaction_t action, tuple_t pos)
 
 	if (action == INPUT_BACK) // обработка события нажатия на клавишу escape
 	{
-
 		name_t list[] = { "ПРОДОЛЖИТЬ", "ВЫЙТИ" };
 		dir_t items = dir_c(list, 2); // формируется объект items отрисовки диалогового окна 
 
@@ -37,7 +36,6 @@ gupdate_t game_loop(void* args, kaction_t action, tuple_t pos)
 	// обработка события нажатия на клавишу space
 	else if (action == INPUT_ACCEPT) set_axies(pos, field);//переключение значения клетки и пересчет видимых клеток
 
-	
 	gstate_t state = check_field(field); // проверка значений видимых клеток для каждой клетки поля
 	draw_field(pos, field); //  отрисовка поля 
 	bool result = TRUE; // инициализация переменной для фиксации поражения или победы
@@ -68,6 +66,26 @@ void set_line(int dir, int* last, int break_point, int* cell) // перезап�
 	int value = break_point - (*last); 
 	for (; (*last) < break_point; (*last)++, cell += (4 * dir)) *cell = value;
 	(*last)++;
+}
+
+int connection_check(tuple_t pos, field_t* field, bool *checker) 
+{
+	int result = 1; 
+	cell_t *current_cell = (field->array + (pos.y * field->size + pos.x));
+
+	bool * current_checker = (checker + (pos.y * field->size + pos.x));
+	*current_checker = TRUE;
+
+	if (pos.x > 0 && (current_cell - 1)->check_value >= 0 && *(current_checker - 1) != TRUE)
+		result += connection_check(tuple_c(pos.x - 1, pos.y), field, checker);	
+	if (pos.x < field->size - 1 && (current_cell + 1)->check_value >= 0 && *(current_checker + 1) != TRUE)
+		result += connection_check(tuple_c(pos.x + 1, pos.y), field, checker);	
+	if (pos.y > 0 && (current_cell - field->size)->check_value >= 0 && *(current_checker - field->size) != TRUE)
+		result += connection_check(tuple_c(pos.x, pos.y - 1), field, checker);	
+	if (pos.y < field->size - 1 && (current_cell + field->size)->check_value >= 0 && *(current_checker + field->size) != TRUE)
+		result += connection_check(tuple_c(pos.x, pos.y + 1), field, checker);
+
+	return result;
 }
 
 bool set_axies(tuple_t pos, field_t* ptr_param) 
@@ -113,27 +131,35 @@ bool set_axies(tuple_t pos, field_t* ptr_param)
 gstate_t check_field(field_t* param)
 {
 	gstate_t result = STATE_RUNNING;
-	bool trigger = TRUE;
+	bool *checker = (bool*)calloc(pow(param->size, 2), sizeof(bool)), trigger = TRUE;
+
+	int white_cell_counter = 0, connections = 0;
+	for (int i = 0; i < pow(param->size, 2); i++) 
+	{
+		if ((param->array + i)->check_value >= 0) 
+		{
+			if (!connections) connections = connection_check(tuple_c(i % param->size, i / param->size), param, checker);
+			white_cell_counter++;
+		}
+	}
+	free(checker);
 
 	for (int i = 0; i < pow(param->size, 2); i++)
 	{
 		cell_t* cell = (param->array + i);
 		// если клетка не содержит цифру то пропуск итерации
 		if (cell->check_value <= 0) continue;
-
+		
 		// если сумма свободных клеток по двум осям проверяемой клетки меньше чем значение клетки
-		if (cell->free_value.x + cell->free_value.y < cell->check_value + 1)
+		if ((cell->free_value.x + cell->free_value.y < cell->check_value + 1) || (connections != white_cell_counter))
 		{
 			result = STATE_LOSE;
 			cell->color = RED;
 		}
-		else
-		{
 			// если сумма свободных клеток по двум осям проверяемой клетки не одинаковы со значение клетки до переключаем тригер победы
-			if (cell->free_value.x + cell->free_value.y != cell->check_value + 1)trigger = FALSE;
-			else cell->color = GREEN;
-		}
-
+		if (cell->free_value.x + cell->free_value.y != cell->check_value + 1) trigger = FALSE;
+		else cell->color = GREEN;
+	
 	}
 	if (trigger) result = STATE_WIN;
 	return result;

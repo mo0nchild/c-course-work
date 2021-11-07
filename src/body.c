@@ -13,7 +13,6 @@ void* update_frame(update_action_function action, tuple_t max,
 		case INPUT_BACK: if (!back_use) break;
 		case INPUT_ACCEPT:
 		case INPUT_NORMALLY:
-
 			clear_frame();
 			printf("\n[ W A S D: ПРЕМЕСТИТЬ КУРСОР ] [ SPACE: ПОДТВЕРДИТЬ ] [ %18.18s ]\n",
 				(back_use) ? "ESCAPE: ВЕРНУТЬСЯ" : "==================");
@@ -74,7 +73,7 @@ void print_rules(void)
 	getch();
 }
 
-bool read_files_in_dir(dir_t* param)
+bool read_path(dir_t* param)
 {
 	DIR* directory = opendir(".\\data");
 	struct dirent* ptr_dirent_value;

@@ -128,9 +128,10 @@ gupdate_t settings(void* args, kaction_t action, tuple_t pos)
 			break;
 		case 1:;
 			dir_t dir;
-			if (read_files_in_dir(&dir))
+			if (read_path(&dir))
 			{
-				name_t* filename = (name_t*)update_frame(load_file, tuple_c(ceil(dir.size / 3.f), 3), TRUE, &dir);
+				int border = (ceil(dir.size / 3.f) == 0) ? 1 : ceil(dir.size / 3.f);
+				name_t* filename = (name_t*)update_frame(load_file, tuple_c(border, 3), TRUE, &dir);
 				if (filename != NULL)strcpy(field->name, *filename);
 			}
 			break;

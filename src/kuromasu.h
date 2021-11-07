@@ -26,6 +26,7 @@
 #define MAX_FIELD_SIZE 10
 #define FILES_ON_PAGE 3
 #define clear_frame(void) system("cls")
+#define path_name "data" 
 
 /*
 * константы для отрисовки баннеров
@@ -136,7 +137,7 @@ cell_t cell_c(int check, int free, color_t color);// конструктор дл
 typedef struct dir_t
 {
 	name_t* array;
-	int size;
+	unsigned int size;
 } dir_t;
 dir_t dir_c(name_t* dir, int size); // конструктор для структуры dir_t
 
@@ -151,7 +152,7 @@ typedef struct field_t
 {
 	cell_t* array;
 	name_t name;
-	int size;
+	unsigned int size;
 }field_t;
 field_t field_c(cell_t* array, name_t name, int size); // конструктор для структуры field_t
 
@@ -205,6 +206,8 @@ void* update_frame(update_action_function action, tuple_t max,
 */
 void print_rules(void);
 
+int connection_check(tuple_t pos, field_t* field, bool* checker);
+
 gupdate_t set_cell_value(void* args, kaction_t action, tuple_t pos); // значения для выбранной клетки
 gupdate_t set_field_size(void* args, kaction_t action, tuple_t pos); // значение размера поля
 gupdate_t set_field_values(void* args, kaction_t action, tuple_t pos); // отрисовка поля для редактирования
@@ -253,9 +256,9 @@ bool set_axies(tuple_t pos, field_t* ptr_param);
 bool file_data(field_t* field, bool readonly);
 
 /*
-* функция read_files_in_dir - считывает все доступные файлы с игровыми полями в директории data
+* функция read_path - считывает все доступные файлы с игровыми полями в директории data
 *  возвращает ошибку
 *  param - указатель, который будет хранить название файлов
 */
 
-bool read_files_in_dir(dir_t* param);
+bool read_path(dir_t* param);
