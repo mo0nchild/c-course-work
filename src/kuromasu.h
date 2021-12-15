@@ -14,19 +14,20 @@
 #include <string.h>
 #include <dirent.h>
 
+#define clear_frame() system("cls")
+
 /*
 * константы для настройки работы приложения
 */
 
-#define WHITE_CELL 0
-#define BLACK_CELL -1
-#define LIFE_COUNT 3
-#define MAX_FILES_IN_DIR 20
-#define MIN_FIELD_SIZE 4
-#define MAX_FIELD_SIZE 10
-#define FILES_ON_PAGE 3
-#define clear_frame(void) system("cls")
-#define path_name "data" 
+#define WHITE_CELL 0			// значение для обозначения белой (пустой) клетки.
+#define BLACK_CELL -1			// значение для обозначения черной клетки.
+#define LIFE_COUNT 3			// максимально допустимое количество попыток, устанавливаемое при запуске игры.
+#define MAX_FILES_IN_DIR 20		// максимально число читаемых файлов (сохранённых полей) в директории.
+#define MIN_FIELD_SIZE 4		// минимальный размер игровой сетки, допустимый для установки при создании уровня.
+#define MAX_FIELD_SIZE 8		// максимальный размер игровой сетки, допустимый для установки при создании уровня.
+#define FILES_ON_PAGE 4			// количество полей, которые отрисовываются на одной странице выбора уровня.
+#define PATH_NAME "data"		// директория, в которой будут храниться все файлы с сформированными уровнями.
 
 /*
 * константы для отрисовки баннеров
@@ -43,13 +44,14 @@
 
 typedef enum
 {
-	key_a = 97,
-	key_d = 100,
-	key_s = 115,
-	key_w = 119,
+	key_left = 75,
+	key_right = 77,
+	key_down = 80,
+	key_up = 72,
 	key_space = 32,
 	key_esc = 27
 } KEY_CODE;
+
 
 /*
 * определение типа color_t для маркировки цветов, которые используются при отрисовки интерфейса
@@ -77,14 +79,14 @@ typedef enum { STATE_RUNNING, STATE_WIN, STATE_LOSE } gstate_t;
 * тип kaction_t необходим для обработки состояний нажатых клавишь пользователем:
 *	INPUT_ERROR - пользователь нажал не верную клавишу
 *	INPUT_NORMALLY - пользователь нажал клавишу для смены положение курсора
-*	INPUT_ACCEPT - пользователь нажал клавишу для потверждения
+*	INPUT_ACCEPT - пользователь нажал клавишу для подтверждения
 *	INPUT_BACK - пользователь нажал клавишу "возврата"
 */
 typedef enum { INPUT_ERROR, INPUT_NORMALLY, INPUT_ACCEPT, INPUT_BACK } kaction_t;
 /*
 * тип fupdate_t предназначен для обработки состояния отрисовки интерфейса
 *	FRAME_CONTINUE - отрисовка продолжается
-*	FRAME_RETURN - вернуться в начало отрисовки
+*	FRAME_RETURN - вернуться в начало текущей отрисовки 
 *	FRAME_EXIT - выйти из отрисовки данного кадра и вернуть значения
 */
 typedef enum { FRAME_CONTINUE, FRAME_RETURN, FRAME_EXIT } fupdate_t;
@@ -103,15 +105,15 @@ typedef struct gupdate_t
 	fupdate_t frame_update_state;
 	void* return_value;
 } gupdate_t;
-gupdate_t gupdate_c(fupdate_t frame_update_state, void* return_value); // конструктор для структуры gupdate_t
+//gupdate_t gupdate_c(fupdate_t frame_update_state, void* return_value); // конструктор для структуры gupdate_t
 
 
 /*
 * структура tuple_t хранение двух значений (координат)
 */
 
-typedef struct tuple_t { int x, y; } tuple_t;
-tuple_t tuple_c(int x, int y); // конструктор для структуры tuple_t
+typedef struct tuple_t { unsigned int x, y; } tuple_t;
+//tuple_t tuple_c(int x, int y); // конструктор для структуры tuple_t
 
 /*
 * структура cell_t описывает свойства клетки игрового поля
@@ -126,7 +128,7 @@ typedef struct cell_t
 	int check_value;
 	color_t color;
 } cell_t;
-cell_t cell_c(int check, int free, color_t color);// конструктор для структуры cell_t
+//cell_t cell_c(int check, int free, color_t color);// конструктор для структуры cell_t
 
 /*
 * структура dir_t описывает значения и размер массива строк
@@ -139,7 +141,7 @@ typedef struct dir_t
 	name_t* array;
 	unsigned int size;
 } dir_t;
-dir_t dir_c(name_t* dir, int size); // конструктор для структуры dir_t
+//dir_t dir_c(name_t* dir, int size); // конструктор для структуры dir_t
 
 /*
 * структура field_t описывает игровое поле
@@ -154,10 +156,10 @@ typedef struct field_t
 	name_t name;
 	unsigned int size;
 }field_t;
-field_t field_c(cell_t* array, name_t name, int size); // конструктор для структуры field_t
+//field_t field_c(cell_t* array, name_t name, int size); // конструктор для структуры field_t
 
 /*
-* определение типа указателя на функцию, вызываемой при отрисовки кадра  
+* определение типа указателя на функцию, вызываемой при отрисовки кадра страницы 
 * функция - возвращает состояние fupdate_t и указатель на переменную
 * args - указатель входное значение
 * action - пользовательская команда
@@ -167,24 +169,25 @@ typedef gupdate_t(*update_action_function)(void* args, kaction_t action, tuple_t
 
 /*
 * функция set_line - пересчет значений выбранной оси
-* dir - коэфициент, характеризующий направление движения по полю
-* last - указатель на начальный индекс
-* break_point - индекс клекти линии где сработало истключение
-* cell - указатель на начальную клетку
+* функция - возвращает указатель на массив ячеек поля
+* ptr_param - указатель на массив ячеек поля
+* size - длина линий
+* step - шаг, необходимый чтобы из одной ячейки линий перейти в другую 
+* shift - смещение точки начала линии перерасчета, относительно начала координат
 */
-void set_line(int dir, int* last, int i, int* cell); 
+cell_t* set_line(cell_t* ptr_param, int size, int step, int shift);
 
 /*
 * функция draw_list - отрисовывает список
 * cursor - индекс выбранного пункта
 * param - список для отрисовки
-* begin - индекс первого объекта для отрисовкаparam[]
+* begin - индекс первого объекта для отрисовка param[]
 * end - индекс последнего объекта для отрисовка
 */
-void draw_list(int cursor, dir_t* param, int begin, int end);
+void draw_list(unsigned int cursor, dir_t* param, int begin, int end);
 
 /*
-* функция draw_list - отрисовывает игровое поле
+* функция draw_field - отрисовывает игровое поле
 * pos - координаты курсора
 * param - указатель на структуру, характеризующее поле
 */
@@ -205,15 +208,16 @@ void* update_frame(update_action_function action, tuple_t max,
 * print_rules - отрисовка правил игры
 */
 void print_rules(void);
+void print_message(char* str[3]);
 
 int connection_check(tuple_t pos, field_t* field, bool* checker);
 
-gupdate_t set_cell_value(void* args, kaction_t action, tuple_t pos); // значения для выбранной клетки
-gupdate_t set_field_size(void* args, kaction_t action, tuple_t pos); // значение размера поля
-gupdate_t set_field_values(void* args, kaction_t action, tuple_t pos); // отрисовка поля для редактирования
-gupdate_t dialog_box(void* args, kaction_t action, tuple_t pos); // диалоговое окно
+gupdate_t set_cell_value(void* args, kaction_t action, tuple_t pos); 
+gupdate_t create_field(void* args, kaction_t action, tuple_t pos); 
+gupdate_t set_field_values(void* args, kaction_t action, tuple_t pos); 
+gupdate_t dialog_box(void* args, kaction_t action, tuple_t pos);
 
-gupdate_t load_file(void* args, kaction_t action, tuple_t pos); // доступные поля в папке data
+gupdate_t load_file(void* args, kaction_t action, tuple_t pos);
 gupdate_t mainmenu(void* args, kaction_t action, tuple_t pos);
 gupdate_t settings(void* args, kaction_t action, tuple_t pos); 
 gupdate_t game_loop(void* args, kaction_t action, tuple_t pos);

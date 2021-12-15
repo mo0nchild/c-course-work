@@ -4,12 +4,10 @@ int main(void)
 {
 	setlocale(LC_ALL, "rus");
 
-	const char* setup_path = (char*)calloc(261, sizeof(char));
-	sprintf(setup_path, "mkdir %s", path_name);
+	char* setup_path = (char*)calloc(261, sizeof(char));
+	sprintf(setup_path, "mkdir %s", PATH_NAME);
 	system(setup_path);
 
-	field_t field = { .name = "data.txt" };
-	update_frame(mainmenu, tuple_c(0, 3), FALSE, &field);
-
+	update_frame(mainmenu, (tuple_t) { 0, 3 }, FALSE, &(field_t){ .name = "data" });
 	return 0;
 }
