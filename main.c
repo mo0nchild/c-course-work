@@ -8,6 +8,12 @@ int main(void)
 	sprintf(setup_path, "mkdir %s", PATH_NAME);
 	system(setup_path);
 
-	update_frame(mainmenu, (tuple_t) { 0, 3 }, FALSE, &(field_t){ .name = "data" });
+	field_t init_field = (field_t){
+		.name = "data",
+		.array = (cell_t*)malloc(sizeof(cell_t)),
+		.size = 1
+	};
+
+	update_frame(mainmenu, (tuple_t) { 0, 3 }, FALSE, &init_field);
 	return 0;
 }
