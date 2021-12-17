@@ -76,8 +76,13 @@ gupdate_t load_file(void* args, kaction_t action, tuple_t pos)
 		{
 		case 0: return (gupdate_t) { FRAME_EXIT, filename };
 		case 1:;
-			field_t read_field;
+			field_t read_field = (field_t){
+				.array = (cell_t*)malloc(sizeof(cell_t)),
+				.size = 1,
+			};
 			strcpy(read_field.name, filename);
+
+
 			if (!file_data(&read_field, TRUE)) 
 			{
 				print_message((char* []) { "[ СОВЕРШЕНА ОШИБКА ПРИ РЕДАКТИРОВНИИ ПОЛЯ ]", "[  НЕВОЗМОЖНО ОТКРЫТЬ  ]", "[ ФАЙЛ ДЛЯ ИГРОВОГО ПОЛЯ ]" });
@@ -86,7 +91,6 @@ gupdate_t load_file(void* args, kaction_t action, tuple_t pos)
 			field_t* save_field = (field_t*)update_frame(set_field_values, (tuple_t) { read_field.size, read_field.size }, TRUE, &read_field);
 			if (!file_data(&read_field, FALSE)) 
 				print_message((char* []) { "[ СОВЕРШЕНА ОШИБКА ПРИ РЕДАКТИРОВНИИ ПОЛЯ ]", "[  НЕВОЗМОЖНО ОТКРЫТЬ  ]", "[ ФАЙЛ ДЛЯ ИГРОВОГО ПОЛЯ ]" });
-			
 		case 2: break;
 		}
 
