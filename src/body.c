@@ -143,18 +143,19 @@ bool file_data(field_t* field, bool readonly)
 	name_t dirname;
 	FILE* file;
 	sprintf(dirname, "./data/%s.txt", field->name);
-	if ((file = fopen(dirname, readonly ? "rt" : "wt"))==NULL) return FALSE;
+	if ((file = fopen(dirname, readonly ? "rt" : "wt")) == NULL) return FALSE;
 
 	if (readonly)
 	{
 		unsigned int index = 0;
-		if (!fscanf(file, "%d", &(field->size))) return FALSE;
-		field->array = (cell_t*)calloc(pow(field->size, 2), sizeof(cell_t));
+		if (!fscanf(file, "%d", &field->size)) return FALSE;
+		//field->array = (cell_t*)calloc(pow(field->size, 2), sizeof(cell_t));
+		field->array = (cell_t*)realloc(field->array, pow(field->size, 2) * sizeof(cell_t));
 
 		for (unsigned int i = 0; i < pow(field->size, 2); i++)
 		{
-			(field->array + i)->free_value.x = (field->array + i)->free_value.y = field->size;
-			(field->array + i)->color = DEFAULT;
+			field->array[i].free_value.x = field->array[i].free_value.y = field->size;
+			field->array[i].color = DEFAULT;
 		}
 		while (!feof(file))
 		{
@@ -171,6 +172,7 @@ bool file_data(field_t* field, bool readonly)
 			fprintf(file, "\n");
 		}
 	}
+	fclose(file);
 	return TRUE;
 }
 
